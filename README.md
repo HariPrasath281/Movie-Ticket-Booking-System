@@ -62,24 +62,24 @@ The project follows the **Incremental Software Development Model**, where the sy
 
 ## 📂 Project Structure
 
-- Movie-Ticket-Booking-System/
-- │
-- ├── main.py
-- ├── config.py
-- ├── requirements.txt
-- ├── README.md
-- ├── templates/
-- │ ├── register.html
-- │ ├── login.html
-- │ ├── movies.html
-- │ └── admin.html
-- │
-- ├── static/
-- │ ├── css/
-- │ └── js/
-- │
-- └── database/
-- └── schema.sql
+ Movie-Ticket-Booking-System/
+ │
+ ├── main.py
+ ├── config.py
+ ├── requirements.txt
+ ├── README.md
+ ├── templates/
+ │  ├── register.html
+ │  ├── login.html
+ │  ├── movies.html
+ │  └── admin.html
+ │
+ ├── static/
+ │  ├── css/
+ │  └── js/
+ │
+ └── database/
+ └── schema.sql
 
 
 ---
