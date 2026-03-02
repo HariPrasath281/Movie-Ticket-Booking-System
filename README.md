@@ -37,6 +37,7 @@ The project follows the **Incremental Software Development Model**, where the sy
 ### 1️⃣ Clone the Repository
 
 git clone https://github.com/mrgamer166/Movie-Ticket-Booking-System.git
+
 cd Movie-Ticket-Booking-System
 
 
@@ -79,21 +80,37 @@ http://127.0.0.1:5000
 ## 📂 Project Structure
 
 movie_ticket_booking/
+
 │
+
 ├── main.py
+
 ├── requirements.txt
+
 ├── .gitignore
+
 ├── templates/
+
 │ ├── register.html
+
 │ ├── login.html
+
 │ ├── movies.html
+
 │ └── admin.html
+
 │
+
 ├── static/
+
 │ ├── css/
+
 │ └── js/
+
 │
+
 └── database/
+
 └── schema.sql
 
 
