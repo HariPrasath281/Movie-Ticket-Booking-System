@@ -69,14 +69,14 @@ The project follows the **Incremental Software Development Model**, where the sy
 - ├── requirements.txt
 - ├── README.md
 - ├── templates/
-- │  ├── register.html
-- │  ├── login.html
-- │  ├── movies.html
-- │  └── admin.html
+- │    ├── register.html
+- │    ├── login.html
+- │    ├── movies.html
+- │    └── admin.html
 - │
 - ├── static/
-- │  ├── css/
-- │  └── js/
+- │    ├── css/
+- │    └── js/
 - │
 - └── database/
 - └── schema.sql
