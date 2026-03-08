@@ -16,9 +16,18 @@
     <h1 class="logo">🎬 Movie Booking</h1>
 
     <div class="nav-links">
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-        <a href="/movies">Movies</a>
+
+    {% if "username" in session %}
+        <span class="user">Welcome {{ session["username"] }}</span>
+        <a href="{{ url_for('movies') }}">Movies</a>
+        <a href="{{ url_for('admin_login') }}">Admin</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+
+    {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Register</a>
+    {% endif %}
+
     </div>
 </nav>
 
