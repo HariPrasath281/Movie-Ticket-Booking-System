@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import mysql.connector
 from config import DB_HOST, DB_USER, DB_PASSWORD, DB_NAME
 
 app = Flask(__name__)
+app.secret_key = "supersecretkey"
 
 
 # -----------------------------
@@ -56,6 +57,8 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
 
+    error = None
+
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -70,18 +73,32 @@ def login():
         conn.close()
 
         if user:
+            session["username"] = username
             return redirect(url_for("movies"))
         else:
-            return "Invalid username or password"
+            error = "Invalid username or password"
 
-    return render_template("login.html")
+    return render_template("login.html", error=error)
 
+# -----------------------------
+# Logout Route
+# -----------------------------
+
+@app.route("/logout")
+def logout():
+    session.pop("username", None)
+    session.pop("admin", None)
+    return redirect(url_for("login"))
 
 # -----------------------------
 # Movies Page
 # -----------------------------
 @app.route("/movies")
 def movies():
+
+    if "username" not in session:
+        return redirect(url_for("login"))
+
     return render_template("movies.html")
 
 
@@ -90,8 +107,31 @@ def movies():
 # -----------------------------
 @app.route("/admin")
 def admin():
-    return render_template("admin.html")
 
+    if "admin" not in session:
+        return redirect(url_for("admin_login"))
+
+    return render_template("admin.html")
+# -----------------------------
+# Admin Login Page
+# -----------------------------
+@app.route("/admin-login", methods=["GET", "POST"])
+def admin_login():
+
+    error = None
+
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        # simple admin credentials
+        if username == "admin" and password == "admin123":
+            session["admin"] = True
+            return redirect(url_for("admin"))
+        else:
+            error = "Invalid admin credentials"
+
+    return render_template("admin_login.html", error=error)
 
 # -----------------------------
 # Run Server
